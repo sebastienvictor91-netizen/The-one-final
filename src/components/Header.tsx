@@ -17,22 +17,26 @@ export function Header() {
   const { openPopup } = useCatalogPopup();
 
   return (
-<header className="fixed top-0 left-0 right-0 z-[999] border-b border-border/60 bg-background/95 backdrop-blur-md shadow-sm">
-      <div className="container-tos flex items-center justify-between gap-4 py-3 md:py-4">
-        {/* Left — logo + brand */}
-        <Link to="/" className="flex items-center gap-3 shrink-0">
-          <img src={logo} alt="TOS" width={44} height={44} className="h-11 w-11 rounded-full ring-1 ring-border/70 bg-card" />
-          <div className="leading-tight hidden sm:block">
-            <div className="font-serif text-xl md:text-[22px] text-gold-gradient font-medium tracking-wide">
+    <header className="fixed top-0 left-0 right-0 z-[999] border-b border-border/60 bg-background/95 backdrop-blur-md shadow-sm">
+      <div className="container-tos flex items-center justify-between gap-3 py-3 md:py-4">
+        <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
+          <img
+            src={logo}
+            alt="TOS"
+            width={44}
+            height={44}
+            className="h-10 w-10 sm:h-11 sm:w-11 rounded-full ring-1 ring-border/70 bg-card shrink-0"
+          />
+          <div className="leading-tight block min-w-0">
+            <div className="font-serif text-[16px] sm:text-xl md:text-[22px] text-gold-gradient font-medium tracking-wide whitespace-nowrap">
               THE ONE SURPRISE
             </div>
-            <div className="text-[10px] md:text-[11px] tracking-[0.18em] text-muted-foreground uppercase">
+            <div className="text-[7px] sm:text-[10px] md:text-[11px] tracking-[0.10em] sm:tracking-[0.18em] text-muted-foreground uppercase whitespace-nowrap">
               Vêtements professionnels premium
             </div>
           </div>
         </Link>
 
-        {/* Center — nav */}
         <nav className="hidden lg:flex items-center gap-7 text-sm">
           {navItems.map((n) => (
             <Link
@@ -47,23 +51,26 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Right */}
-        <div className="flex items-center gap-2 md:gap-3">
+        <div className="flex items-center gap-1.5 md:gap-3 shrink-0">
           <span className="hidden md:inline-flex items-center gap-1.5 text-xs text-muted-foreground border border-border rounded-full px-2.5 py-1 bg-card">
             <span>🇫🇷</span> Marque française
           </span>
+
           <button aria-label="Recherche" className="p-2 rounded-full hover:bg-secondary transition">
             <Search className="size-4" />
           </button>
+
           <button aria-label="Compte" className="p-2 rounded-full hover:bg-secondary transition hidden sm:inline-flex">
             <User className="size-4" />
           </button>
+
           <button
             onClick={openPopup}
             className="btn-devis hidden md:inline-flex items-center rounded-full px-4 py-2 text-sm font-medium"
           >
             Demander un devis
           </button>
+
           <button
             aria-label="Menu"
             className="lg:hidden p-2 rounded-full hover:bg-secondary transition"
@@ -74,7 +81,6 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <div className="lg:hidden border-t border-border bg-background">
           <nav className="container-tos flex flex-col py-4 gap-1">
@@ -90,8 +96,12 @@ export function Header() {
                 {n.label}
               </Link>
             ))}
+
             <button
-              onClick={() => { setOpen(false); openPopup(); }}
+              onClick={() => {
+                setOpen(false);
+                openPopup();
+              }}
               className="btn-devis mt-3 rounded-full px-4 py-2.5 text-sm font-medium self-start"
             >
               Demander un devis
@@ -100,7 +110,6 @@ export function Header() {
         </div>
       )}
 
-      {/* Subtle bleu/blanc/rouge band */}
       <div className="h-[2px] fr-stripe opacity-60" />
     </header>
   );
