@@ -18,32 +18,36 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[999] border-b border-border/60 bg-background/95 backdrop-blur-md shadow-sm">
-      <div className="container-tos flex items-center justify-between gap-3 py-3 md:py-4">
-        <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
+      <div className="container-tos flex items-center justify-between gap-3 py-2 md:py-3">
+        <Link to="/" className="flex items-center gap-2 min-w-0 shrink-0">
           <img
             src={logo}
             alt="TOS"
             width={44}
             height={44}
-            className="h-10 w-10 sm:h-11 sm:w-11 rounded-full ring-1 ring-border/70 bg-card shrink-0"
+            className="h-9 w-9 md:h-10 md:w-10 rounded-full ring-1 ring-border/70 bg-card shrink-0"
           />
-          <div className="leading-tight block min-w-0">
-            <div className="font-serif text-[16px] sm:text-xl md:text-[22px] text-gold-gradient font-medium tracking-wide whitespace-nowrap">
+
+          <div className="leading-tight min-w-0">
+            <div className="font-serif text-[13px] min-[390px]:text-[15px] md:text-[19px] text-gold-gradient font-medium tracking-wide whitespace-nowrap overflow-hidden text-ellipsis">
               THE ONE SURPRISE
             </div>
-            <div className="text-[7px] sm:text-[10px] md:text-[11px] tracking-[0.10em] sm:tracking-[0.18em] text-muted-foreground uppercase whitespace-nowrap">
-              Vêtements professionnels premium
+
+            <div className="hidden sm:block text-[9px] md:text-[10px] tracking-[0.16em] text-muted-foreground uppercase whitespace-nowrap">
+              Professionnels premium
             </div>
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-7 text-sm">
+        <nav className="hidden lg:flex items-center gap-5 text-sm shrink-0">
           {navItems.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-foreground/80 hover:text-foreground transition-colors"
-              activeProps={{ className: "text-foreground font-medium fr-bar" }}
+              className="text-foreground/80 hover:text-foreground transition-colors whitespace-nowrap"
+              activeProps={{
+                className: "text-foreground font-medium fr-bar",
+              }}
               activeOptions={{ exact: n.to === "/" }}
             >
               {n.label}
@@ -51,29 +55,38 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-1.5 md:gap-3 shrink-0">
-          <span className="hidden md:inline-flex items-center gap-1.5 text-xs text-muted-foreground border border-border rounded-full px-2.5 py-1 bg-card">
-            <span>🇫🇷</span> Marque française
+        <div className="flex items-center gap-1 md:gap-2 shrink-0">
+          <span className="hidden xl:inline-flex items-center gap-1.5 text-xs text-muted-foreground border border-border rounded-full px-2.5 py-1 bg-card whitespace-nowrap">
+            Marque française
           </span>
 
-          <button aria-label="Recherche" className="p-2 rounded-full hover:bg-secondary transition">
+          <Link
+            to="/catalogue"
+            aria-label="Recherche catalogue"
+            className="p-2 rounded-full hover:bg-secondary transition"
+          >
             <Search className="size-4" />
-          </button>
+          </Link>
 
-          <button aria-label="Compte" className="p-2 rounded-full hover:bg-secondary transition hidden sm:inline-flex">
+          <Link
+            to="/contact"
+            aria-label="Compte"
+            className="p-2 rounded-full hover:bg-secondary transition hidden sm:inline-flex"
+          >
             <User className="size-4" />
-          </button>
+          </Link>
 
-          <button
-            onClick={openPopup}
-            className="btn-devis hidden md:inline-flex items-center rounded-full px-4 py-2 text-sm font-medium"
+          <Link
+            to="/contact"
+            className="btn-devis hidden md:inline-flex items-center rounded-full px-3 py-2 text-sm font-medium whitespace-nowrap"
           >
             Demander un devis
-          </button>
+          </Link>
 
           <button
+            type="button"
             aria-label="Menu"
-            className="lg:hidden p-2 rounded-full hover:bg-secondary transition"
+            className="lg:hidden p-2 rounded-full hover:bg-secondary transition shrink-0"
             onClick={() => setOpen((o) => !o)}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -90,22 +103,22 @@ export function Header() {
                 to={n.to}
                 onClick={() => setOpen(false)}
                 className="py-2.5 text-foreground/90 hover:text-foreground"
-                activeProps={{ className: "font-semibold text-foreground" }}
+                activeProps={{
+                  className: "font-semibold text-foreground",
+                }}
                 activeOptions={{ exact: n.to === "/" }}
               >
                 {n.label}
               </Link>
             ))}
 
-            <button
-              onClick={() => {
-                setOpen(false);
-                openPopup();
-              }}
+            <Link
+              to="/contact"
+              onClick={() => setOpen(false)}
               className="btn-devis mt-3 rounded-full px-4 py-2.5 text-sm font-medium self-start"
             >
               Demander un devis
-            </button>
+            </Link>
           </nav>
         </div>
       )}

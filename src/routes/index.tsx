@@ -20,9 +20,7 @@ import { gammes } from "@/data/gammes";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      {
-        title: "THE ONE SURPRISE — Vêtements professionnels premium français",
-      },
+      { title: "THE ONE SURPRISE — Vêtements professionnels premium français" },
       {
         name: "description",
         content:
@@ -50,14 +48,14 @@ function HomePage() {
       <section className="relative overflow-hidden bg-background">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[oklch(0.97_0.012_85)] via-background to-background" />
 
-        <div className="container-tos grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-12 items-center pt-10 md:pt-16 lg:pt-10 pb-12 md:pb-16 lg:pb-10 min-h-[680px]">
+        <div className="container-tos grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-10 items-center pt-24 md:pt-28 lg:pt-24 pb-10 md:pb-14 lg:pb-12 min-h-auto lg:min-h-[620px]">
           <div className="relative z-10">
             <div className="inline-flex items-center gap-2 text-xs tracking-[0.18em] uppercase text-muted-foreground border border-border rounded-full px-3 py-1 bg-card">
               <span className="size-1.5 rounded-full bg-gold" />
               Marque française premium
             </div>
 
-            <h1 className="mt-5 font-serif text-[46px] sm:text-6xl lg:text-[72px] leading-[0.98] tracking-[-0.03em]">
+            <h1 className="mt-5 font-serif text-[38px] sm:text-[48px] md:text-[56px] lg:text-[64px] leading-[1] tracking-[-0.03em]">
               Pensé pour les
               <br />
               professionnels.
@@ -92,12 +90,12 @@ function HomePage() {
                 Voir le catalogue <ArrowRight className="size-4" />
               </Link>
 
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent("tos:open-catalog"))}
+              <Link
+                to="/contact"
                 className="btn-devis inline-flex items-center rounded-full px-6 py-3 text-sm font-medium"
               >
                 Demander un devis
-              </button>
+              </Link>
 
               <a
                 href={WA}
@@ -114,10 +112,10 @@ function HomePage() {
           <div className="relative z-0 w-full">
             <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-tr from-[oklch(0.92_0.04_75)] via-transparent to-transparent blur-2xl opacity-70" />
 
-            <div className="relative overflow-hidden rounded-[1.5rem] border border-border bg-card shadow-card h-[420px] sm:h-[500px] lg:h-[600px]">
+            <div className="relative overflow-hidden rounded-[1.5rem] border border-border bg-card shadow-card h-[360px] sm:h-[430px] lg:h-[540px]">
               <img
                 src={heroImg}
-                alt="Professionnels équipés THE ONE SURPRISE : sécurité, BTP, restauration, santé, barber"
+                alt="Professionnels équipés THE ONE SURPRISE"
                 width={1280}
                 height={1280}
                 className="block h-full w-full object-cover object-center"
@@ -178,8 +176,7 @@ function GammesSection() {
           </div>
 
           <h2 className="mt-2 font-serif text-3xl md:text-5xl max-w-2xl">
-            Des vêtements <span className="text-gold-gradient">pensés métier</span> par
-            métier.
+            Des vêtements <span className="text-gold-gradient">pensés métier</span> par métier.
           </h2>
         </div>
 
@@ -232,8 +229,8 @@ function PersonnalisationSection({ perso }: { perso: string }) {
           </h2>
 
           <p className="mt-4 text-muted-foreground max-w-xl">
-            Broderie, sérigraphie, flocage, patchs : nous habillons vos équipes avec
-            votre logo, vos couleurs, votre niveau d'exigence.
+            Broderie, sérigraphie, flocage, patchs : nous habillons vos équipes avec votre logo,
+            vos couleurs, votre niveau d'exigence.
           </p>
 
           <div className="mt-7 grid sm:grid-cols-2 gap-4">
@@ -283,8 +280,7 @@ function ConfianceSection() {
         </div>
 
         <h2 className="mt-2 font-serif text-3xl md:text-5xl">
-          Une marque <span className="text-gold-gradient">française</span> au service
-          des pros.
+          Une marque <span className="text-gold-gradient">française</span> au service des pros.
         </h2>
 
         <p className="mt-3 text-muted-foreground">
@@ -318,8 +314,8 @@ function QualiteSection({ qualite }: { qualite: string }) {
           </h2>
 
           <p className="mt-4 text-muted-foreground max-w-md">
-            Tissus résistants, confort terrain, coupes professionnelles, textiles
-            respirants, finitions premium.
+            Tissus résistants, confort terrain, coupes professionnelles, textiles respirants,
+            finitions premium.
           </p>
 
           <ul className="mt-6 space-y-2 text-sm">
@@ -399,12 +395,17 @@ function CtaFinal() {
         </p>
 
         <div className="mt-7 flex flex-wrap justify-center gap-3">
-          <button
-            onClick={() => window.dispatchEvent(new CustomEvent("tos:open-catalog"))}
-            className="rounded-full bg-background text-foreground px-6 py-3 text-sm font-medium transition hover:bg-background/90"
+          <Link
+            to="/contact"
+            className="rounded-full px-8 py-3.5 text-sm font-medium border border-white/10 shadow-soft transition-all duration-300 hover:scale-[1.02]"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(59,130,246,0.18) 0%, rgba(255,255,255,1) 50%, rgba(239,68,68,0.18) 100%)",
+              color: "#111",
+            }}
           >
             Demander un devis
-          </button>
+          </Link>
 
           <a
             href={WA}
@@ -420,4 +421,3 @@ function CtaFinal() {
     </section>
   );
 }
-

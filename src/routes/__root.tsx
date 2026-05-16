@@ -8,7 +8,8 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 
-import appCss from "../styles.css?url";
+import "../styles.css";
+
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -145,11 +146,6 @@ export const Route =
 
       links: [
         {
-          rel: "stylesheet",
-          href: appCss,
-        },
-
-        {
           rel: "preconnect",
           href: "https://fonts.googleapis.com",
         },
@@ -213,4 +209,3 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
-
