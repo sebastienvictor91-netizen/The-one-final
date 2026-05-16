@@ -1,0 +1,7 @@
+export const metadata = {
+  title: "THE ONE SURPRISE",
+  description: "Vêtements professionnels premium",
+  icons: {
+    icon: "/favicon.png",
+  },
+};
